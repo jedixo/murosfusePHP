@@ -102,7 +102,7 @@ include("php/dbconnect.php");
                                 </div>
                                 <div class="col-md-4">
                                     <h4>Fix you (cover) - Jake Dixon</h4>
-                                    <p>Just a cover of coldplay's fix you that I put together one day, good for use as an example here <a href="#" class="btn btn-info">Read more</a><a href="#" data-target="#commentModal" class="btn btn-info">comment</a></p>
+                                    <p>Just a cover of coldplay's fix you that I put together one day, good for use as an example here <a href="#" class="btn btn-info">Read more</a><a href="#" data-toggle="modal" data-target="#commentModal" class="btn btn-info">comment</a></p>
                                 </div>
                             </div>
                             <div class="musicItem">
@@ -286,16 +286,20 @@ include("php/dbconnect.php");
                 <div class="modal-body">
                     
                     <?php
-                   // $sql = "SELECT * FROM comments;";
-                   // $result = $dbh->query($sql);
-                   // foreach ($dbh->query($sql) as $row) {
-                   //     echo "<p> " . $row[comment];
-                   // }
+                    $sql = "SELECT * FROM comments;";
+                    $result = $dbh->query($sql);
+                    foreach ($dbh->query($sql) as $row) {
+                      
+                        echo "<p> " . $row[user] .": " .  $row[comment];
+                    }
                     ?>
                    
                 </div>
                 <div class="modal-footer">
-                    <input type="submit" class="btn btn-success" value="Upload File" name="submit" form="uploadForm">
+                    <form id="commentForm" method="psot" action="addComment.php">
+                        <textarea rows="4" cols="50">
+                        </textarea>
+                    <input type="submit" class="btn btn-success" value="add Comment" name="submit" form="commentForm">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
                 </div>
             </div>
