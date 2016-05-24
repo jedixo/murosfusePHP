@@ -176,9 +176,9 @@
                     <h4 class="modal-title">Upload a track:</h4>
                 </div>
                 <div class="modal-body">
-                    <form id="uploadForm" enctype="multipart/form-data" action="/api/photo" method="post">
+                    <form id="uploadForm" enctype="multipart/form-data" method="post" action="php/upload.php" >
                     <!-- should also store username needs to be added -->
-                        <input type="file" name="userFile" />
+                        <input type="file"  name="fileToUpload" id="fileToUpload" />
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -189,6 +189,9 @@
         </div>
     </div>
     <!-- end of modal -->
+    
+    
+    
 
 
     <!-- register modal window -->
