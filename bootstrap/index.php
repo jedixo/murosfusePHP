@@ -296,11 +296,14 @@ include("php/dbconnect.php");
                    
                 </div>
                 <div class="modal-footer">
-                    <form id="commentForm" method="psot" action="addComment.php">
-                        <textarea rows="4" cols="50">
-                        </textarea>
-                    <input type="submit" class="btn btn-success" value="add Comment" name="submit" form="commentForm">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                    <form id="commentForm" method="post" action="addComment.php">
+                        <textarea rows="4" cols="50" name="comment">add comment</textarea>
+                        
+                        <input type="submit" class="btn btn-success" value="add Comment">
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                        </form>
+                   
+
                 </div>
             </div>
         </div>
