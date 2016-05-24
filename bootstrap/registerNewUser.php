@@ -12,7 +12,7 @@ if($_POST[password1] == $_POST[password2]){
     echo $sql;
     if($dbh->exec($sql)){
         $_SESSION['username'] = $_POST['username'];
-        header("Location: index.html");
+        header("Location: index.php");
         echo "database exec worked";
     }else{
         echo "database exec failed";
