@@ -102,7 +102,7 @@ include("php/dbconnect.php");
                                 </div>
                                 <div class="col-md-4">
                                     <h4>Fix you (cover) - Jake Dixon</h4>
-                                    <p>Just a cover of coldplay's fix you that I put together one day, good for use as an example here <a href="#" class="btn btn-info">Read more</a></p>
+                                    <p>Just a cover of coldplay's fix you that I put together one day, good for use as an example here <a href="#" class="btn btn-info">Read more</a><a href="#" data-target="#commentModal" class="btn btn-info">comment</a></p>
                                 </div>
                             </div>
                             <div class="musicItem">
@@ -237,6 +237,8 @@ include("php/dbconnect.php");
         </div>
     </div>
     <!-- end of modal -->
+    
+   
 <!-- footer -->
 <!-- end of footer-->
       </div>
@@ -269,6 +271,39 @@ include("php/dbconnect.php");
       </div>
       
       
+      
+      
+       
+    <!-- upload modal window -->
+    <div id="commentModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- content -->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">comments:</h4>
+                </div>
+                <div class="modal-body">
+                    
+                    <?php
+                   // $sql = "SELECT * FROM comments;";
+                   // $result = $dbh->query($sql);
+                   // foreach ($dbh->query($sql) as $row) {
+                   //     echo "<p> " . $row[comment];
+                   // }
+                    ?>
+                   
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" class="btn btn-success" value="Upload File" name="submit" form="uploadForm">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end of modal -->
+    
+    
       
 <!-- end of modal -->
 
