@@ -73,7 +73,7 @@ include("php/dbconnect.php");
             <li><a href="#">View your music <span class="badge">42</span></a></li>
             <li><a href="#">View your projects <span class="badge">12</span></a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="profile.html">Edit Profile</a></li>
+            <li><a href="profile.php">Edit Profile</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="#">Log out</a></li>
           </ul>

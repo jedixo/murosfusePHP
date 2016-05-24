@@ -74,15 +74,32 @@ include("php/dbconnect.php");
                     <h2>*Placeholder Username</h2>
                     <div class="myDivider"></div><br>
                     <h3>Edit Your Account Details: </h3>
-                    <form>
-                        <img src="mf-images/profile-placeholder.png" width="20%"><br><br>
-                        <input type="file" value="profileImage" placeholder="Choose a new profile Image"><br> Email Address:<br>
-                        <input type="text" placeholder="Username"><br><br> Password: <br>
-                        <input type="password" placeholder="Password"><br><br> Confirm Password: <br>
-                        <input type="password" placeholder="Password"><br><br> Musician Name: <br>
-                        <input type="text" placeholder="Musician Name"><br><br>
+                    <form method="post" action="editProfile.php">
+                        <?php
+                        $sql = "SELECT * FROM users WHERE username='{$_SESSION['username']}'";
+                        foreach($dbh->query($sql) as $row){
+                            ?>
+                        <!--<img src="mf-images/profile-placeholder.png" width="20%"><br><br>-->
+                        <!--<input type="file" value="profileImage" placeholder="Choose a new profile Image"><br> Email Address:<br>-->
+                        Email Address:<br>
+                        <input type="text" placeholder="Email" name="email "value="<?php echo $row[email];?>"><br><br> 
+                        Password: <br>
+                        <input type="password" placeholder="Password" name="password" value="<?php echo $row[password];?>"><br><br> 
+                        Username: <br>
+                        <input type="text" placeholder="Username" name="username" value="<?php echo $row[username];?>"><br><br>
+                        First Name: <br>
+                        <input type="text" placeholder="First Name" name="firstname" value="<?php echo $row[firstname];?>"><br><br>
+                        Last Name: <br>
+                        <input type="text" placeholder="Last Name" name="lastname" value="<?php echo $row[lastname];?>"><br><br>
+                        Date of Birth: <br>
+                        <input type="text" placeholder="DOB" name="DOB" value="<?php echo $row[DOB];?>"><br><br>
+                        <?php 
+                        }
+                        ?>
                         <input type="submit" class="btn btn-success" value="Save">
                     </form><br>
+                    
+                    <a href="deleteProfile.php" class="btn btn-danger">Delete Account</a><br><br>
 
                     <div class="myDivider"></div><br>
                     <h3>Your Tracks</h3>
