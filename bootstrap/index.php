@@ -227,7 +227,7 @@ include("php/dbconnect.php");
                     <h4 class="modal-title">Login:</h4>
                 </div>
                 <div class="modal-body">
-                <form id="loginForm" method="post" action="php/loginVerification.php" >
+                <form id="loginForm" method="post" action="loginVerification.php" >
                     Email Address:<br>
                 <input type="text" placeholder="Username" name='username' class='username' id='username'><br>
                     Password:<br>
@@ -258,20 +258,26 @@ include("php/dbconnect.php");
                     <h4 class="modal-title">Register:</h4>
                 </div>
                 <div class="modal-body">
-                    <form id="registerForm">
+                    <form id="registerForm" method="post" action="registerNewUser.php">
                         Email Address:<br>
-                        <input type="text" placeholder="Username"><br>
+                        <input type="text" placeholder="Username" name="email"><br>
                         Password:<br>
-                        <input type="password" placeholder="Password"><br>
+                        <input type="password" placeholder="Password" name="password1"><br>
                         Confirm Password:<br>
-                        <input type="password" placeholder="Password"><br>
-                        Musician Name:<br>
-                        <input type="text" placeholder="Musician Name"><br><br>
+                        <input type="password" placeholder="Password" name="password2"><br>
+                        Username:<br>
+                        <input type="text" placeholder="Username" name="username"><br>
+                        First Name:<br>
+                        <input type="text" placeholder="First Name" name="firstname"><br>
+                        Last Name:<br>
+                        <input type="text" placeholder="Last Name" name="lastname"><br>
+                        Date of Birth:<br>
+                        <input type="text" placeholder="DOB" name="DOB"><br><br>
                         <input type="checkbox"> Do you accept the <a href="#">terms</a> and conditions of use<br><br>
+                        <input type="submit" class="btn btn-success" value="Sign-Up">
                     </form>
                 </div>
                 <div class="modal-footer">
-                <input class="btn btn-success" value="Sign-Up" form="registerForm">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
                 </div>
             </div>

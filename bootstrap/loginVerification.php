@@ -22,7 +22,7 @@ $result = $dbh->query($sql);
                 echo "password is incorrect.";
             }
         } else {
-            echo "user does not exist";
         }
     }
+            echo "user does not exist";
 ?>
