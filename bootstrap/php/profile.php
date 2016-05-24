@@ -1,10 +1,3 @@
-<?php
-
-session_start();
-include("php/dbconnect.php");
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 

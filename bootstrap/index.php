@@ -69,7 +69,7 @@ include("php/dbconnect.php");
             <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="caret"></span>  *Username Placeholder <img src="mf-images/profile-placeholder.png" width="25px" height="25px"></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Add new track</a></li>
+            <li><a href="#" data-toggle="modal" data-target="#uploadModal">Add new track</a></li>
             <li><a href="#">View your music <span class="badge">42</span></a></li>
             <li><a href="#">View your projects <span class="badge">12</span></a></li>
             <li role="separator" class="divider"></li>
@@ -213,6 +213,30 @@ include("php/dbconnect.php");
 
           
 <!-- end of main content-->
+
+<!-- upload modal window -->
+    <div id="uploadModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- content -->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Upload a track:</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="uploadForm" enctype="multipart/form-data" method="post" action="php/upload.php" >
+                    <!-- should also store username needs to be added -->
+                        <input type="file"  name="fileToUpload" id="fileToUpload" />
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" class="btn btn-success" value="Upload File" name="submit" form="uploadForm">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end of modal -->
 <!-- footer -->
 <!-- end of footer-->
       </div>
