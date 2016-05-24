@@ -101,7 +101,7 @@ include("php/dbconnect.php");
                                     </audio>
                                 </div>
                                 <div class="col-md-4">
-                                    <h4>Fix you (cover) - Jake Dixon</h4>
+                                    <h4><a href="track.mp3">Fix you (cover) - Jake Dixon</a></h4>
                                     <p>Just a cover of coldplay's fix you that I put together one day, good for use as an example here <a href="#" class="btn btn-info">Read more</a><a href="#" data-toggle="modal" data-target="#commentModal" class="btn btn-info">comment</a></p>
                                 </div>
                             </div>
