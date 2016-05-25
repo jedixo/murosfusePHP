@@ -30,7 +30,7 @@ include("php/dbconnect.php");
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
           </button>
-                <a href="#" class="navbar-brand">MusoFuse</a>
+                <a href="index.php" class="navbar-brand">MusoFuse</a>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
