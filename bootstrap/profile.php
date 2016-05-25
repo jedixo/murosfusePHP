@@ -58,6 +58,7 @@ include("php/dbconnect.php");
                             <li><a href="#">View your projects <span class="badge">12</span></a></li>
                             <li role="separator" class="divider"></li>
                             <li><a href="#">Edit Profile</a></li>
+                            <li><a href="db/adminer?sqlite=&username=&db=musofuse.sqlite">admin access</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a href="#">Log out</a></li>
                         </ul>

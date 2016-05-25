@@ -102,7 +102,12 @@ include("php/dbconnect.php");
                                 </div>
                                 <div class="col-md-4">
                                     <h4><a href="track.mp3">Fix you (cover) - Jake Dixon</a></h4>
-                                    <p>Just a cover of coldplay's fix you that I put together one day, good for use as an example here <a href="#" class="btn btn-info">Read more</a><a href="#" data-toggle="modal" data-target="#commentModal" class="btn btn-info">comment</a></p>
+                                    <p>Just a cover of coldplay's fix you that I put together one day, good for use as an example here <a href="#" class="btn btn-info">Read more</a>
+                                    <?php  
+                                    if (isset($_SESSION['username'])) { ?>
+                                        <a href="#" data-toggle="modal" data-target="#commentModal" class="btn btn-info">comment</a>
+                                        <?php } ?>
+                                        </p>
                                 </div>
                             </div>
                             <div class="musicItem">
@@ -257,7 +262,7 @@ include("php/dbconnect.php");
                     Email Address:<br>
                 <input type="text" placeholder="Username" name='username' class='username' id='username'><br>
                     Password:<br>
-                <input type="text" placeholder="Password" name='password' class='password' id='password'><br><br>
+                <input type="password" placeholder="Password" name='password' class='password' id='password'><br><br>
                 <input type="submit" class="btn btn-success" value="Login"  name= 'submit' >
                 </form>
                 
