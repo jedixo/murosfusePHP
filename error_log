@@ -1,0 +1,11 @@
+[22-Aug-2016 13:06:21 UTC] PHP Fatal error:  Call to a member function query() on a non-object in /home/musofuse/public_html/index2.php on line 105
+[22-Aug-2016 13:18:37 UTC] PHP Fatal error:  Call to a member function close() on a non-object in /home/musofuse/public_html/index2.php on line 120
+[28-Aug-2016 17:12:00 UTC] PHP Fatal error:  Call to a member function query() on a non-object in /home/musofuse/public_html/home.php on line 96
+[29-Aug-2016 08:33:38 UTC] PHP Fatal error:  Call to a member function query() on a non-object in /home/musofuse/public_html/index.php on line 148
+[29-Aug-2016 08:33:41 UTC] PHP Fatal error:  Call to a member function query() on a non-object in /home/musofuse/public_html/index.php on line 148
+[29-Aug-2016 08:34:59 UTC] PHP Fatal error:  Call to a member function query() on a non-object in /home/musofuse/public_html/discovery.php on line 274
+[29-Aug-2016 08:35:15 UTC] PHP Fatal error:  Call to a member function query() on a non-object in /home/musofuse/public_html/index.php on line 148
+[29-Aug-2016 08:35:17 UTC] PHP Fatal error:  Call to a member function query() on a non-object in /home/musofuse/public_html/discovery.php on line 274
+[29-Aug-2016 08:35:41 UTC] PHP Fatal error:  Call to a member function query() on a non-object in /home/musofuse/public_html/index.php on line 148
+[29-Aug-2016 08:36:00 UTC] PHP Fatal error:  Call to a member function query() on a non-object in /home/musofuse/public_html/discovery.php on line 274
+[29-Aug-2016 12:10:49 UTC] PHP Fatal error:  Call to undefined function R() in /home/musofuse/public_html/home.php on line 102
