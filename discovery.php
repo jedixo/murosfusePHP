@@ -3,6 +3,24 @@
 session_start();
 include("php/dbconnect.php");
 
+    $pages = $_SESSION['pages'];
+    array_shift($pages);
+    array_push($pages,"discovery.php");
+    $_SESSION['pages'] = $pages;
+
+
+$getInstrument = (isset($_GET['instrument']))? $_GET['instrument']: "";
+$getGenre = (isset($_GET['genre']))? $_GET['genre']:"";
+$sqlGenre = "Select Name from Genres";			//Will change when tags are added to db
+$sqlInst = "Select Instruments from Instruments";	//As Above
+$genres = $dbh->query($sqlGenre);
+$insts = $dbh->query($sqlInst);
+$page = (isset($_GET['page']))? $_GET['page']:"1";
+$offset = ($page - 1) * 10;
+$entries = $dbh->query("select Songs.Thumbnail, Path, SongTitle, Description, Instruments, Genre, username, Songs.UserID, Songs.ID from Songs, users where Songs.UserID = users.id" .(($getInstrument != "")? " and Instruments like '". $getInstrument."'":""). (($getGenre != "")? ($getInstrument != "") ? " and Genre like '". $getGenre."'" : " and Genre like '". $getGenre."'" : ""). " order by UploadDate"); 	//As Above
+$totalEntries = mysqli_num_rows($entries);
+$pages = ceil($totalEntries/10);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,133 +46,104 @@ include("php/dbconnect.php");
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <h2>Discovery</h2>
-                        <div class="myDivider"></div><br>
-                        This feature is coming soon.
-<!--                        <h3>New This Week</h3><br>-->
-                        <!--
-                        <div>
+                        <div class="myDivider">
+<!-- Filter -->
                             <form>
-                            Genre: <select name="Genre">
-                                <option value="Classical">Classical</option>
-                                <option value="Rock/Metal">Rock/Metal</option>
-                                <option value="Electronic">Electronic</option>
-                                <option value="Other">Other</option>
-                                </select> Instrument: <select name="Instrument">
-                                <option value="Vocals">Vocals</option>
-                                <option value="Guitar">Guitar</option>
-                                <option value="Drums">Drums</option>
-                                <option value="Synth">Synth</option>
-                                <option value="Other">Other</option>
-                                </select> <input type="submit" name="submit" value="Filter" class="btn btn-success">
+                            Genre: <select name="genre">
+                            <?php 
+                            echo "<option value=\"\">$name</option>";
+                            foreach ($genres as $genre){
+                            	$name = $genre['Name'];
+                            	echo "<option value=\"$name\">$name</option>";                            
+                            }
+                             
+                                
+                                echo "</select> Instrument: <select name=\"instrument\">";
+                                echo "<option value=\"\">$instrument</option>";
+			    	foreach($insts as $inst){
+			    		$instrument = $inst['Instruments'];
+			    		echo "<option value=\"$instrument\">$instrument</option>";
+			    	}
+			    	echo "</select>";
+			    ?>
+                                <input type="submit" class="btn btn-success">
                             </form>
-                        </div><br>
-                        <div class="row">
-                            <div class="musicItem">
-                                <div class="col-md-2">
-                                    <img alt="Music art" src="mf-images/placeholder-lp.png" width="100%" height="100%">
-                                </div>
-                                <div class="col-md-4">
-                                    <h4>Song Title - Musician</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ultricies nunc nec felis posuere, in scelerisque risus accumsan. Vivamus tempor, mi et varius maximus... <a href="#" class="btn btn-info">Read more</a></p>
-                                </div>
-                            </div>
-                            <div class="musicItem">
-                                <div class="col-md-2">
-                                    <img alt="Music art" src="mf-images/placeholder-lp.png" width="100%" height="100%">
-                                </div>
-                                <div class="col-md-4">
-                                    <h4>Song Title - Musician</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ultricies nunc nec felis posuere, in scelerisque risus accumsan. Vivamus tempor, mi et varius maximus... <a href="#" class="btn btn-info">Read more</a></p>
-                                </div>
-                            </div>
-                        </div><br>
-                        <div class="row">
-                            <div class="musicItem">
-                                <div class="col-md-2">
-                                    <img alt="Music art" src="mf-images/placeholder-lp.png" width="100%" height="100%">
-                                </div>
-                                <div class="col-md-4">
-                                    <h4>Song Title - Musician</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ultricies nunc nec felis posuere, in scelerisque risus accumsan. Vivamus tempor, mi et varius maximus... <a href="#" class="btn btn-info">Read more</a></p>
-                                </div>
-                            </div>
-                            <div class="musicItem">
-                                <div class="col-md-2">
-                                    <img alt="Music art" src="mf-images/placeholder-lp.png" width="100%" height="100%">
-                                </div>
-                                <div class="col-md-4">
-                                    <h4>Song Title - Musician</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ultricies nunc nec felis posuere, in scelerisque risus accumsan. Vivamus tempor, mi et varius maximus... <a href="#" class="btn btn-info">Read more</a></p>
-                                </div>
-                            </div>
-                        </div><br>
-                        -->
-                        
-<!--
-                        <br><div class="myDivider"></div>
-                        <h3>Trending</h3>
--->
-<!--
-                        <div class="row">
-                            <div class="musicItem">
-                                <div class="col-md-2">
-                                    <img alt="Music art" src="mf-images/placeholder-lp.png" width="100%" height="100%">
-                                </div>
-                                <div class="col-md-4">
-                                    <h4>Song Title - Musician</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ultricies nunc nec felis posuere, in scelerisque risus accumsan. Vivamus tempor, mi et varius maximus... <a href="#" class="btn btn-info">Read more</a></p>
-                                </div>
-                            </div>
-                            <div class="musicItem">
-                                <div class="col-md-2">
-                                    <img alt="Music art" src="mf-images/placeholder-lp.png" width="100%" height="100%">
-                                </div>
-                                <div class="col-md-4">
-                                    <h4>Song Title - Musician</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ultricies nunc nec felis posuere, in scelerisque risus accumsan. Vivamus tempor, mi et varius maximus... <a href="#" class="btn btn-info">Read more</a></p>
-                                </div>
-                            </div>
-                        </div><br>
-                        <div class="row">
-                            <div class="musicItem">
-                                <div class="col-md-2">
-                                    <img alt="Music art" src="mf-images/placeholder-lp.png" width="100%" height="100%">
-                                </div>
-                                <div class="col-md-4">
-                                    <h4>Song Title - Musician</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ultricies nunc nec felis posuere, in scelerisque risus accumsan. Vivamus tempor, mi et varius maximus... <a href="#" class="btn btn-info">Read more</a></p>
-                                </div>
-                            </div>
-                            <div class="musicItem">
-                                <div class="col-md-2">
-                                    <img alt="Music art" src="mf-images/placeholder-lp.png" width="100%" height="100%">
-                                </div>
-                                <div class="col-md-4">
-                                    <h4>Song Title - Musician</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ultricies nunc nec felis posuere, in scelerisque risus accumsan. Vivamus tempor, mi et varius maximus... <a href="#" class="btn btn-info">Read more</a></p>
-                                </div>
-                            </div>
                         </div>
-              -->          
-<!--                        Pagination                              -->
+<!-- End Filter -->
+                        <br>
+                        <h3>Trending</h3>
+                        <?php
+                        $itemCount = 0;
+                        foreach($entries as $entry){
+                        	if ($itemCount < ($offset+10) && $itemCount>=$offset){
+                        		if ($itemCount %2==0||$itemCount ==0){
+                                        	echo "<div class=\"row\">";
+                        		}
+                        	?>
+                        	<div class="musicItem">
+                                	<div class="col-md-2">
+                                		<?php
+                                    			echo "<img alt=\"Music art\" src=\"songImages/" . $entry["Thumbnail"] . "\" width=\"100%\" height=\"100%\">";
+                                		?>
+                                	</div>
+                                	<div class="col-md-4">
+                                	<?php
+                                	echo "<h4><a href=\"songdetailed.php?id=".$entry["ID"]."\">". $entry["SongTitle"] . " </a></h4>                                  
+                                                <p>" . $entry["Description"] . " by <a href=\"viewAUsersTracks.php?user=".$entry["UserID"]."\">" . $entry["username"] . "</a></p><br>
+                                                <audio id=\"player\" controls width = \"100%\">
+                                                   <source src=\"" . $entry["Path"] . "\" type=\"audio/mpeg\">
+                                                    Your browser does not support the audio element.
+                                                </audio><br><span><a href='songdetailed.php?id=".$entry["ID"]."' class='btn btn-info'>Read more</a></span>";
+                                                ?>
+                                	</div>
+                       		</div>
+                        	<?php
+                        	if (($itemCount  % 2) != 0) {
+                                        echo "</div></br>";
+                                }
+                                
+                                }
+                                
+                        	$itemCount++;
+                        	
+                        }
+                        ?>
+                        </div>
+                        
 
-<!--
+
+
+<!-- pagination -->
                         <div class="myPagination">
                             <nav>
                               <ul class="pagination">
-                                <li>
-                                  <a href="#" aria-label="Previous">
-                                    <span aria-hidden="true">&laquo;</span>
-                                  </a>
-                                </li>
-                                <li><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">5</a></li>
-                                <li>
-                                  <a href="#" aria-label="Next">
-                                    <span aria-hidden="true">&raquo;</span>
+                                <?php
+                                
+                                    echo "<li><a href=\"?page=1&genre=$getGenre&instrument=$getInstrument\">&laquo;</a></li><li>";
+                                if ($page != 1){
+                                echo "<a href=\"?page=".($page-1)."&genre=$getGenre&instrument=$getInstrument\" aria-label=\"Previous\">";
+                                } else {
+                                echo "<a href=\"?page=$pages&genre=$getGenre&instrument=$getInstrument\" aria-label=\"Previous\">";
+                                }
+                                echo "<span aria-hidden=\"true\">&lsaquo;</span></a>
+                                </li>";
+                                
+                                
+                                for ($i=1; $i<$pages+1; $i++){
+                                	echo "<li><a href=\"?page=$i&genre=$getGenre&instrument=$getInstrument\">$i</a></li>";
+                                }
+                                
+                                if ($page != ($pages+1)){
+                                echo "<li>
+                               <a href=\"?page=".($page+1)."&genre=$getGenre&instrument=$getInstrument\" aria-label=\"Next\">";
+                                } else {
+                                echo "<li><a href=\"?page=1&genre=$getGenre&instrument=$getInstrument\" aria-label=\"Next\">";
+                                }
+                                
+                                    echo "<span aria-hidden=\"true\">&rsaquo;</span><li><a href=\"?page=$pages&genre=$getGenre&instrument=$getInstrument\">&raquo;</a></li>";
+
+                                ?>
+                                
                                   </a>
                                 </li>
                               </ul>
@@ -165,7 +154,7 @@ include("php/dbconnect.php");
                 </div>
               </div>
           <div class="col-md-1"></div>
-          -->
+          
 
 <!-- end of main content-->
 <!-- footer -->

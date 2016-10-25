@@ -9,7 +9,6 @@
 [29-Aug-2016 08:35:41 UTC] PHP Fatal error:  Call to a member function query() on a non-object in /home/musofuse/public_html/index.php on line 148
 [29-Aug-2016 08:36:00 UTC] PHP Fatal error:  Call to a member function query() on a non-object in /home/musofuse/public_html/discovery.php on line 274
 [29-Aug-2016 12:10:49 UTC] PHP Fatal error:  Call to undefined function R() in /home/musofuse/public_html/home.php on line 102
-<<<<<<< HEAD
 [30-Aug-2016 03:07:44 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in /home/musofuse/public_html/home.php on line 40
 [30-Aug-2016 03:07:57 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in /home/musofuse/public_html/home.php on line 40
 [30-Aug-2016 03:09:05 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in /home/musofuse/public_html/home.php on line 40
@@ -307,5 +306,3 @@
 [18-Oct-2016 03:45:48 UTC] PHP Fatal error:  Call to undefined function printr_r() in /home/musofuse/public_html/viewUserTracks.php on line 44
 [18-Oct-2016 03:46:50 UTC] PHP Fatal error:  Call to undefined function query() in /home/musofuse/public_html/deletecoment.php on line 10
 [23-Oct-2016 14:24:29 UTC] PHP Fatal error:  Call to undefined function issset() in /home/musofuse/public_html/songdetailed.php on line 118
-=======
->>>>>>> origin/master
