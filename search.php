@@ -3,11 +3,14 @@
 session_start();
 include("php/dbconnect.php");
 
+<<<<<<< HEAD
     $pages = $_SESSION['pages'];
     array_shift($pages);
     array_push($pages,"search.php");
     $_SESSION['pages'] = $pages;
 
+=======
+>>>>>>> origin/master
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -38,20 +41,29 @@ include("php/dbconnect.php");
                                 
                                 <?php
                                     echo "<div class='col-md-6'><h2>Songs</h2><br>";
+<<<<<<< HEAD
                                     $sql = "SELECT * FROM Songs, users WHERE  Songs.UserID = users.id AND SongTitle LIKE '%$_GET[SearchParameters]%' ORDER BY UploadDate DESC  ";
+=======
+                                    $sql = "SELECT * FROM Songs WHERE SongTitle LIKE '%$_GET[SearchParameters]%' ORDER BY UploadDate DESC ";
+>>>>>>> origin/master
                                     // echo $sql;
                                     $result = $dbh->query($sql);
 
                                     if ($result->num_rows > 0) {
                                         // output data of each row
                                         while($row = $result->fetch_assoc()) {
+<<<<<<< HEAD
                                             //echo "<pre>";
                                             //print_r($row);
                                             //echo "</pre>";
+=======
+                                        //  print_r($row);
+>>>>>>> origin/master
                                             echo "<div class=\"row\">
                                                     <div class=\"musicItem\">
                                                         <div class=\"col-md-4\">
                                                             <img alt=\"Music art\" src=\"songImages/". $row["Thumbnail"] ." \" width=\"100%\" height=\"100%\">
+<<<<<<< HEAD
                                                             
                                                         </div></div>
                                                         <div class=\"col-md-8\">
@@ -63,6 +75,18 @@ include("php/dbconnect.php");
                                                                 Your browser does not support the audio element.
                                                             </audio>
                                                             </div></div></br>";
+=======
+                                                            <audio controls width = \"100%\">
+                                                                <source src=\"" . $row["Path"] . "\" type=\"audio/mpeg\">
+                                                                Your browser does not support the audio element.
+                                                            </audio>
+                                                        </div></div>
+                                                        <div class=\"col-md-8\">
+                                                                    <h4><a href=\"songFiles/" . $row["Path"] . "\">" . $row["SongTitle"] . " </a></h4>                                  
+                                                                    <p>" . $row["Description"] . " by " . $row["username"] ."                                                                         
+                                                                    </p>
+                                                            </div></div>";
+>>>>>>> origin/master
                                                                     }
                                                                 } else {
                                                                     echo "0 results";
@@ -89,6 +113,7 @@ include("php/dbconnect.php");
                                                             <img alt=\"Music art\" src=\"profileImages/". $row["Thumbnail"] . " \" width=\"100%\" height=\"100%\">
                                                         </div></div>
                                                         <div class=\"col-md-8\">
+<<<<<<< HEAD
                                                             <h4><a href=\"viewAUsersTracks.php?user=".$row["id"]."\">" . $row["username"] . "</a></h4>";
 
                                                             $findNumTracks = "SELECT id FROM Songs WHERE UserID = $row[id];";
@@ -100,6 +125,10 @@ include("php/dbconnect.php");
                                                             
 
                                                             echo "</div></div>";
+=======
+                                                            <h4><a href='#'>" . $row["username"] . "</a></h4>
+                                                            </div></div>";
+>>>>>>> origin/master
                                                                     }
                                                                 } else {
                                                                     echo "0 results";

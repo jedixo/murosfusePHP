@@ -15,8 +15,12 @@ include("php/dbconnect.php");
     <!-- Bootstrap -->
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+<<<<<<< HEAD
           <script src="jquery.min.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
+=======
+      
+>>>>>>> origin/master
   </head>
   <body>
       <div class="container-fluid">
@@ -51,6 +55,11 @@ include("php/dbconnect.php");
       
       
 <!-- bootstrap and jquery JS files-->
+<<<<<<< HEAD
 
+=======
+    <script src="jquery.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+>>>>>>> origin/master
   </body>
 </html>

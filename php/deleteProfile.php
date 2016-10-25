@@ -1,37 +1,17 @@
 <?php
 session_start();
-include "dbconnect.php";
+include "php/dbconnect.php";
 
-//echo $_SESSION[username];
-$deleteCommentsSQL = "DELETE FROM Comments WHERE UserID = $_SESSION[id];";
- if ($dbh->query($deleteCommentsSQL) === TRUE) {
-    }
-$findAdditionalTracks = "SELECT * FROM Songs WHERE UserID = $_SESSION[id];";
-foreach ($dbh->query($findAdditionalTracks) as $row) {
-    $deleteComments = "DELETE FROM Comments WHERE SongID = $row[ID];";
-    $deleteAdditionalSQL = "DELETE FROM AditionalTracks WHERE SongID = $row[ID];";
-    if ($dbh->query($deleteAdditionalSQL) === TRUE) {
-    }
-    if ($dbh->query($deleteComments) === TRUE) {
-    }
-}
+echo $_SESSION[username];
 
-$deleteSongsSQL = "DELETE FROM Songs WHERE UserID = $_SESSION[id];";
- if ($dbh->query($deleteSongsSQL) === TRUE) {
-    }
+$sql = "DELETE FROM users WHERE username='{$_SESSION['username']}';";
+echo $sql;
 
-
-$sql = "DELETE FROM users WHERE id = $_SESSION[id];";
-//echo $sql;
-
-if ($dbh->query($sql) === TRUE) {
-
+if($dbh->exec($sql)){
+    // echo "deleting user suceeded";
     $_SESSION[username] = null;
-    session_destroy();
-    header("Location: ../index.php");
-} else  {
-    echo "failure";
+    header("Location: index.php");
+}else{
+    echo "deleting user failed";
 }
-
-
 ?>
